@@ -167,9 +167,7 @@ footer p { margin: 0; }
     font-size: 12px;
   }
 
-  .nav a:not(:last-child) {
-    display: none;
-  }
+  https://github.com/gzeevisrael-beep/egosourcesite/edit/main/styles.css
 
   .hero {
     grid-template-columns: 1fr;
