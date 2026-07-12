@@ -308,8 +308,16 @@ footer p { margin: 0; }
     font-size: 12px;
   }
 
-  .nav a:not(:last-child) {
-    display: none;
+  .nav a {
+  display: none;
+}
+
+.nav a[href="he.html"],
+.nav a[href="en.html"],
+.nav a[href="index.html"] {
+  display: inline-flex !important;
+  align-items: center;
+}
   } (max-width: 600px) {
   .section { width: min(100% - 30px, var(--max)); }
   .site-header { height: 66px; padding: 0 16px; }
