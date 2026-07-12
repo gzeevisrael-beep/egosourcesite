@@ -160,18 +160,145 @@ footer p { margin: 0; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
-  .nav { display: none; }
-  .hero { grid-template-columns: 1fr; padding-top: 120px; }
-  .hero-visual { height: 430px; min-height: 0; }
-  .statement-grid, .connection { grid-template-columns: 1fr; }
-  .signal-grid { grid-template-columns: 1fr; }
-  .signal-card { min-height: 220px; }
-  .signal-card h3 { margin-top: 45px; }
-  .path-steps { grid-template-columns: 1fr 1fr; }
-  .path-step:nth-child(2) { border-right: 0; }
-  .path-step:nth-child(3), .path-step:nth-child(4) { border-top: 1px solid var(--line); }
-  .source-item { grid-template-columns: 1fr; gap: 10px; }
-  .circle-visual { max-width: 430px; }
+@media (max-width: 900px) {
+  .nav {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .nav a:not(:last-child) {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+  }
+
+  .hero-visual {
+    height: 430px;
+    min-height: 0;
+  }
+
+  .statement-grid,
+  .connection {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-card {
+    min-height: 220px;
+  }
+
+  .signal-card h3 {
+    margin-top: 45px;
+  }
+
+  .path-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .path-step:nth-child(2) {
+    border-right: 0;
+  }
+
+  .path-step:nth-child(3),
+  .path-step:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+
+  .source-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .circle-visual {
+    max-width: 430px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    width: min(100% - 30px, var(--max));
+  }
+
+  .site-header {
+    height: 66px;
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  h1 {
+    font-size: clamp(39px, 12vw, 58px);
+  }
+
+  .hero-visual {
+    height: 340px;
+  }
+
+  .orb {
+    width: 135px;
+    font-size: 24px;
+  }
+
+  .statement,
+  .path,
+  .practice,
+  .sources {
+    padding: 100px 0;
+  }
+
+  .path-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .path-step,
+  .path-step:not(:first-child),
+  .path-step:last-child {
+    padding: 28px 0;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    min-height: 0;
+  }
+
+  .step-index {
+    margin-bottom: 25px;
+  }
+
+  .practice-shell {
+    border-radius: 20px;
+  }
+
+  .state-picker {
+    flex-direction: column;
+  }
+
+  .state-picker button {
+    width: 100%;
+  }
+
+  .practice-controls .button {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .connection {
+    padding-bottom: 100px;
+  }
+
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 900px) {
