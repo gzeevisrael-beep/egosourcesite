@@ -174,7 +174,16 @@ footer p { margin: 0; }
   .circle-visual { max-width: 430px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .nav {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .nav a:not(:last-child) {
+    display: none;
+  } (max-width: 600px) {
   .section { width: min(100% - 30px, var(--max)); }
   .site-header { height: 66px; padding: 0 16px; }
   .hero { padding-top: 100px; }
