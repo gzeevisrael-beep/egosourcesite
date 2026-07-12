@@ -1,232 +1,87 @@
-<!doctype html>
-<html lang="he" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="מבקשים דרך לעבור את מחסום האהבה העצמית בכוח המאור המחזיר למוטב">
-  <title>לעבור את מחסום האהבה העצמית בכוח המקור</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    html[dir="rtl"] body { font-family: "Heebo", sans-serif; }
-    html[dir="rtl"] h1,
-    html[dir="rtl"] h2,
-    html[dir="rtl"] h3,
-    html[dir="rtl"] blockquote { font-family: "Frank Ruhl Libre", serif; }
-    html[dir="rtl"] .statement-grid,
-    html[dir="rtl"] .path-step,
-    html[dir="rtl"] .sources-heading { text-align: right; }
-  </style>
-</head>
-<body>
-  <canvas id="field" aria-hidden="true"></canvas>
+const states = {
+  distance: [
+    ["להכיר באמת", "להכיר בשקט שהרצון לקבל מושל בי כעת ומרחיק אותי מן החיבור, ושאין בידי לשנותו ישירות."],
+    ["להיכלל בחברים", "לזכור שגם החברים נאבקים בטבעם. למצוא לפחות שאיפה אחת שלהם שאני רוצה לתמוך בה."],
+    ["לבנות בקשה", "לפנות אל המקור: תן לנו כוח להעלות את חשיבות החיבור מעל ההתרחקות האישית ולהרגיש רצון משותף אחד."]
+  ],
+  conflict: [
+    ["להפריד בין העובדה לאגו", "לתאר את מה שקרה ללא האשמה, ולהכיר בחשבון הפנימי שרוצה להוכיח שאני צודק."],
+    ["להעמיד את החיבור מעל הניצחון", "לשאול: איזו פעולה תשמור עכשיו על הכיוון לחיבור, גם כאשר דעתי אינה מתקבלת?"],
+    ["לבקש צורה חדשה", "לפנות אל המקור: עזור לנו להשתמש במחלוקת לא לפירוד, אלא לבניית קשר גבוה יותר."]
+  ],
+  emptiness: [
+    ["לא לברוח מן הריקנות", "להכיר בכך שאין כרגע טעם וכוחות, בלי לדרוש מיד מילוי נעים."],
+    ["לקבל חשיבות מן הסביבה", "להיזכר בחבר, במקור או ברגע שבו המטרה הייתה חיה, ולתת למטרה המשותפת לדבר במקום ההרגשה הנוכחית."],
+    ["לבקש רצון", "לפנות אל המקור: תן לי לא מילוי, אלא חיסרון לחיבור, לתפילה ולהשפעה."]
+  ]
+};
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="לראש העמוד">
-      <span class="brand-mark">∞</span>
-      <span>המקור</span>
-    </a>
-    <nav class="nav" aria-label="ניווט ראשי">
-      <a href="#barrier">המחסום</a>
-      <a href="#path">הדרך</a>
-      <a href="#practice">העבודה</a>
-      <a href="#sources">המקורות</a>
-      <a href="index.html">RU</a>
-    </nav>
-    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="הפעלת צליל רקע">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+let selectedState = "distance";
+let currentStep = 0;
 
-  <main id="top">
-    <section class="hero section">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">מעבדה פנימית של חיבור</p>
-        <h1>מבקשים דרך לעבור את מחסום האהבה העצמית <em>בכוח המקור</em></h1>
-        <p class="lead">אין ענייננו לבטל את הרצון לקבל, שהרי הוא עצם חומר הבריאה. אלא כל עבודתנו היא להמשיך כוח עליון, שייתן ברצון צורה חדשה של השפעה וחיבור.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#practice">להתחיל בעבודה</a>
-          <a class="button ghost" href="#path">לראות את סדר הדרך</a>
-        </div>
-      </div>
+const buttons = [...document.querySelectorAll(".state-picker button")];
+const title = document.getElementById("practiceTitle");
+const text = document.getElementById("practiceText");
+const label = document.getElementById("practiceLabel");
+const progress = document.getElementById("practiceProgress");
+const reflection = document.getElementById("reflection");
+const prev = document.getElementById("prevStep");
+const next = document.getElementById("nextStep");
 
-      <div class="hero-visual reveal" aria-label="מחסום סמלי בין האהבה העצמית ובין החיבור">
-        <div class="orb orb-left"><span>אני</span></div>
-        <div class="barrier-line">
-          <div class="barrier-core"></div>
-          <p>מחסום</p>
-        </div>
-        <div class="orb orb-right"><span>אנחנו</span></div>
-        <div class="source-light"></div>
-      </div>
+function renderPractice() {
+  const [stepTitle, stepText] = states[selectedState][currentStep];
 
-      <div class="scroll-cue" aria-hidden="true"><span></span>המשך</div>
-    </section>
+  title.textContent = stepTitle;
+  text.textContent = stepText;
+  label.textContent = `בירור ${currentStep + 1} מתוך 3`;
+  progress.style.width = `${(currentStep + 1) * 33.333}%`;
+  prev.disabled = currentStep === 0;
+  next.textContent = currentStep === 2 ? "סיום" : "המשך";
+  reflection.placeholder =
+    currentStep === 2
+      ? "נסחו בקשה משותפת..."
+      : "כתבו משפט כן אחד...";
+}
 
-    <section class="statement section" id="barrier">
-      <div class="section-number">01</div>
-      <div class="statement-grid">
-        <h2 class="reveal">המחסום אינו דבר שמחוץ לאדם</h2>
-        <div class="statement-copy reveal">
-          <p>הוא מתגלה במקום שבו טובת עצמו חשובה לו יותר מטובת החיבור, ובמקום שבו אין הוא מסוגל להחשיב את רצון הזולת כרצונו ממש.</p>
-          <blockquote>אין האדם מנצח את טבעו בכוח עצמו, אלא מכין חיסרון נכון אל המאור שיתקנו.</blockquote>
-        </div>
-      </div>
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
 
-      <div class="signal-grid">
-        <article class="signal-card reveal">
-          <span>01</span>
-          <h3>התרחקות</h3>
-          <p>רצונות החברים חדלים להיות חשובים בעיניי, והאדם שב ומתכנס בתוך חשבון עצמו.</p>
-        </article>
-        <article class="signal-card reveal">
-          <span>02</span>
-          <h3>הצדקה עצמית</h3>
-          <p>נדמה לאדם שהקלקול מצוי בזולתו, ואינו רואה שהכול ניתן לו כדי לתקן את יחסו אל החיבור.</p>
-        </article>
-        <article class="signal-card reveal">
-          <span>03</span>
-          <h3>חוסר אונים</h3>
-          <p>האדם מגלה שאין בידו כוח לשנות את צורת אהבת עצמו, ומכאן נולדת תפילה אמיתית.</p>
-        </article>
-      </div>
-    </section>
+    selectedState = button.dataset.state;
+    currentStep = 0;
+    reflection.value = "";
 
-    <section class="path section" id="path">
-      <div class="section-number">02</div>
-      <div class="path-intro reveal">
-        <p class="eyebrow">לא ביטול הרצון, אלא תיקון הכוונה</p>
-        <h2>הדרך עוברת דרך החיבור</h2>
-      </div>
+    renderPractice();
+  });
+});
 
-      <div class="path-line" aria-hidden="true"><span id="pathProgress"></span></div>
-      <div class="path-steps">
-        <article class="path-step reveal">
-          <div class="step-index">1</div>
-          <div>
-            <h3>גילוי השבירה</h3>
-            <p>אין לכסות את הדחייה ואין להתבייש בה, אלא להכיר שהיא מקום העבודה שהוכן לאדם.</p>
-          </div>
-        </article>
+buttons[0].classList.add("active");
 
-        <article class="path-step reveal">
-          <div class="step-index">2</div>
-          <div>
-            <h3>קבלת חשיבות מן החברה</h3>
-            <p>מן החברים מקבל האדם את גדלות המטרה, את חשיבות החיבור ואת הכוח ללכת למעלה מן הדעת הפרטית.</p>
-          </div>
-        </article>
+next.addEventListener("click", () => {
+  if (currentStep < 2) {
+    currentStep++;
+    reflection.value = "";
+    renderPractice();
+  } else {
+    title.textContent = "הבקשה נבנתה";
+    text.textContent =
+      "הישארו כמה רגעים בכוונה המשותפת. אל תבדקו את התוצאה בתוך ההרגשה האישית, אלא שמרו על הכיוון לחיבור.";
+    label.textContent = "העבודה הושלמה";
+    next.textContent = "להתחיל מחדש";
 
-        <article class="path-step reveal">
-          <div class="step-index">3</div>
-          <div>
-            <h3>בניית חיסרון משותף</h3>
-            <p>אין מבקשים הרגשה נעימה, אלא כוח להתחבר ולתת מקום לגילוי תכונת ההשפעה בינינו.</p>
-          </div>
-        </article>
+    next.onclick = () => {
+      currentStep = 0;
+      next.onclick = null;
+      renderPractice();
+    };
+  }
+});
 
-        <article class="path-step reveal">
-          <div class="step-index">4</div>
-          <div>
-            <h3>מסירת העבודה למאור</h3>
-            <p>לאחר כל ההשתדלות בחיבור, מכיר האדם שהתיקון עצמו אינו בידו, אלא בא מן המקור.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="practice section" id="practice">
-      <div class="section-number">03</div>
-      <div class="practice-shell reveal">
-        <div class="practice-header">
-          <p class="eyebrow">שלוש דקות של בירור פנימי</p>
-          <h2>עבודה בבניית בקשה משותפת</h2>
-          <p>בחרו את המצב הנוכחי ועברו שלושה בירורים, בלי לדרוש מעצמכם לתקן את הטבע בכוח עצמי.</p>
-        </div>
-
-        <div class="state-picker" role="group" aria-label="בחירת מצב">
-          <button type="button" data-state="distance">אני מרגיש התרחקות</button>
-          <button type="button" data-state="conflict">אני שקוע במחלוקת</button>
-          <button type="button" data-state="emptiness">אין בי טעם או הרגשה</button>
-        </div>
-
-        <div class="practice-card" id="practiceCard">
-          <div class="practice-progress"><span id="practiceProgress"></span></div>
-          <p class="practice-label" id="practiceLabel">בירור 1 מתוך 3</p>
-          <h3 id="practiceTitle">להכיר באמת</h3>
-          <p id="practiceText">להכיר בשקט שהרצון לקבל מושל בי כעת ומרחיק אותי מן החיבור, ושאין בידי לשנותו ישירות.</p>
-          <textarea id="reflection" rows="3" placeholder="כתבו בירור כן אחד..."></textarea>
-          <div class="practice-controls">
-            <button class="button ghost" id="prevStep" type="button" disabled>חזרה</button>
-            <button class="button primary" id="nextStep" type="button">המשך</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="connection section">
-      <div class="connection-copy reveal">
-        <p class="eyebrow">ההיפוך העיקרי</p>
-        <h2>לא האדם עצמו עובר את המחסום.<br>אלא החיבור נעשה מקום שבו המאור פועל.</h2>
-        <p>העשירייה אינה רק סביבה תומכת, אלא מקום לבניית כלי משותף. כל אחד מביא את חסרונו, וכולם מכוונים אותו אל מטרה אחת, שתשרה ביניהם צורת ההשפעה.</p>
-      </div>
-
-      <div class="circle-visual reveal" aria-hidden="true">
-        <div class="person p1"></div><div class="person p2"></div><div class="person p3"></div><div class="person p4"></div><div class="person p5"></div>
-        <div class="person p6"></div><div class="person p7"></div><div class="person p8"></div><div class="person p9"></div><div class="person p10"></div>
-        <div class="circle-core">המקור</div>
-      </div>
-    </section>
-
-    <section class="sources section" id="sources">
-      <div class="section-number">04</div>
-      <div class="sources-heading reveal">
-        <p class="eyebrow">פנייה אל המקורות</p>
-        <h2>אין לומדים כדי לדעת בלבד, אלא כדי להמשיך מאור המחזיר למוטב</h2>
-      </div>
-
-      <div class="source-list">
-        <article class="source-item reveal">
-          <span>בעל הסולם</span>
-          <h3>מאמר הערבות</h3>
-          <p>ביאור התנאי שעל ידו יכול האדם לצאת מאהבת עצמו ולהיכלל בכלל.</p>
-          <a class="button ghost" href="https://kabbalahmedia.info/he/sources/itcVAcFn">פתיחת המקור</a>
-        </article>
-
-        <article class="source-item reveal">
-          <span>רב"ש</span>
-          <h3>מאמרים בענייני אהבת חברים</h3>
-          <p>סדר העבודה בבניית סביבה, חשיבות המטרה ותפילה משותפת.</p>
-          <a class="button ghost" href="https://kabbalahmedia.info/he/sources/rQ6sIUZK">פתיחת מאמרי רב"ש</a>
-        </article>
-
-        <article class="source-item reveal">
-          <span>בעל הסולם</span>
-          <h3>הקדמה לתלמוד עשר הספירות</h3>
-          <p>על מטרת העסק בחכמת הקבלה ועל המאור הגנוז בה, המחזיר את האדם למוטב.</p>
-          <a class="button ghost" href="https://kabbalahmedia.info/he/sources/OqZMFGHu">פתיחת ההקדמה לתע"ס</a>
-        </article>
-
-        <article class="source-item reveal">
-          <span>ספר הזוהר עם פירוש הסולם</span>
-          <h3>גילוי הקשר שבין הנשמות</h3>
-          <p>על המערכת האחת העומדת מאחורי הרגשת הפירוד שבמציאות.</p>
-          <a class="button ghost" href="https://kabbalahmedia.info/he/sources/AwGBQX2L">פתיחת ספר הזוהר</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="final section">
-      <div class="final-glow" aria-hidden="true"></div>
-      <div class="final-copy reveal">
-        <p>המחסום נעשה לפתח, כאשר אין האדם מבקש שהדחייה תיעלם, אלא שתיבנה מעליה צורת חיבור חדשה.</p>
-        <a class="button primary" href="#practice">לחזור אל העבודה</a>
-      </div>
-    </section>
-  </main>
-
-  <script src="he.js"></script>
-</body>
-</html>
+prev.addEventListener("click", () => {
+  if (currentStep > 0) {
+    currentStep--;
+    reflection.value = "";
+    renderPractice();
+  }
+});
