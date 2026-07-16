@@ -182,9 +182,9 @@ const musicLabels = {
   he: { play: 'להפעיל מניגוני בעל הסולם', stop: 'לכבות את המוזיקה' }
 }[siteLanguage];
 const melodies = [
-  { title: 'Nigun', src: 'https://www.kabbalahmedia.info/MP3/music/nig-nigun4.mp3' },
-  { title: 'Yedid Nefesh', src: 'https://www.kabbalahmedia.info/MP3/music/nig-iadid9.mp3' },
-  { title: 'Bnei Heichala', src: 'https://www.kabbalahmedia.info/MP3/music/nig-bnei2.mp3' }
+  { title: 'Nigun', src: 'music/baal-hasulam-nigun.mp3' },
+  { title: 'Bnei Heichala', src: 'music/baal-hasulam-bnei-heichala.mp3' },
+  { title: 'Tzadik ke Tamar', src: 'music/baal-hasulam-tzadik-ke-tamar.mp3' }
 ];
 let musicPlayer;
 let melodyIndex = 0;
