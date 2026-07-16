@@ -176,30 +176,63 @@ if (canvas) {
   window.addEventListener('resize', resizeCanvas);
 }
 
-let audioContext;
-let oscillator;
-let gain;
-const soundToggle = document.getElementById('soundToggle');
+const musicLabels = {
+  ru: { play: 'Включить музыку Бааль Сулама', stop: 'Выключить музыку' },
+  en: { play: 'Play Baal HaSulam melodies', stop: 'Stop music' },
+  he: { play: 'להפעיל מניגוני בעל הסולם', stop: 'לכבות את המוזיקה' }
+}[siteLanguage];
+const melodies = [
+  { title: 'Nigun', src: 'https://www.kabbalahmedia.info/MP3/music/nig-nigun4.mp3' },
+  { title: 'Yedid Nefesh', src: 'https://www.kabbalahmedia.info/MP3/music/nig-iadid9.mp3' },
+  { title: 'Bnei Heichala', src: 'https://www.kabbalahmedia.info/MP3/music/nig-bnei2.mp3' }
+];
+let musicPlayer;
+let melodyIndex = 0;
+let soundToggle = document.getElementById('soundToggle');
+if (!soundToggle) {
+  soundToggle = document.createElement('button');
+  soundToggle.id = 'soundToggle';
+  soundToggle.className = 'sound-toggle floating';
+  soundToggle.type = 'button';
+  soundToggle.innerHTML = '<span></span><span></span><span></span><b></b>';
+  soundToggle.setAttribute('aria-pressed', 'false');
+  document.body.appendChild(soundToggle);
+}
+const updateMusicLabel = active => {
+  const label = active ? musicLabels.stop : musicLabels.play;
+  soundToggle.setAttribute('aria-label', label);
+  soundToggle.title = label;
+  const caption = soundToggle.querySelector('b');
+  if (caption) caption.textContent = active ? `Baal HaSulam · ${melodies[melodyIndex].title}` : label;
+};
+updateMusicLabel(false);
 
-soundToggle?.addEventListener('click', async () => {
+soundToggle.addEventListener('click', async () => {
   const active = soundToggle.getAttribute('aria-pressed') === 'true';
   if (active) {
-    gain?.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .4);
-    setTimeout(() => oscillator?.stop(), 450);
+    musicPlayer?.pause();
+    musicPlayer = null;
     soundToggle.setAttribute('aria-pressed', 'false');
+    updateMusicLabel(false);
     return;
   }
-
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  oscillator = audioContext.createOscillator();
-  gain = audioContext.createGain();
-  oscillator.type = 'sine';
-  oscillator.frequency.value = 174;
-  gain.gain.value = .0001;
-  oscillator.connect(gain).connect(audioContext.destination);
-  oscillator.start();
-  gain.gain.exponentialRampToValueAtTime(.025, audioContext.currentTime + 1.2);
-  soundToggle.setAttribute('aria-pressed', 'true');
+  musicPlayer = new Audio(melodies[melodyIndex].src);
+  musicPlayer.volume = .28;
+  musicPlayer.addEventListener('ended', () => {
+    melodyIndex = (melodyIndex + 1) % melodies.length;
+    musicPlayer.src = melodies[melodyIndex].src;
+    updateMusicLabel(true);
+    musicPlayer.play().catch(() => {});
+  });
+  try {
+    await musicPlayer.play();
+    soundToggle.setAttribute('aria-pressed', 'true');
+    updateMusicLabel(true);
+  } catch {
+    musicPlayer = null;
+    soundToggle.setAttribute('aria-pressed', 'false');
+    updateMusicLabel(false);
+  }
 });
 
 const trackedSections = [...document.querySelectorAll('.studysection[id], .lesson[id]')];

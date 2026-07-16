@@ -61,7 +61,10 @@ button { color: inherit; }
 .sound-toggle[aria-pressed="true"] span { background: var(--gold); animation: pulsebar .8s ease infinite alternate; }
 .sound-toggle[aria-pressed="true"] span:nth-child(2) { animation-delay: .2s; }
 .sound-toggle[aria-pressed="true"] span:nth-child(3) { animation-delay: .4s; }
+.sound-toggle.floating { position: fixed; inset: auto 22px 22px auto; z-index: 60; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(17,21,26,.9); color: var(--ink); box-shadow: 0 10px 34px rgba(0,0,0,.35); backdrop-filter: blur(12px); }
+.sound-toggle.floating b { margin-inline-start: 7px; font-size: 11px; font-weight: 700; white-space: nowrap; }
 @keyframes pulsebar { to { height: 22px; } }
+@media (max-width: 620px) { .sound-toggle.floating { inset: auto 12px 12px auto; } .sound-toggle.floating b { display: none; } }
 
 .section { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; position: relative; }
 .hero { min-height: 100svh; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 5vw; padding: 130px 0 70px; }
