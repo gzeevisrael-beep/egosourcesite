@@ -415,3 +415,65 @@
   .ptichasymbol { transform: scale(.9); margin-inline: -18px; }
   .lesson summary strong { font-size: 20px; }
 }
+
+
+.language-switch { display: flex; align-items: center; gap: 9px; font-size: 11px; color: var(--muted); }
+.language-switch a { padding: 5px 7px; border: 1px solid transparent; border-radius: 999px; }
+.language-switch a:hover { color: var(--ink); border-color: var(--line); }
+html[dir="rtl"] .ptichapage { font-family: "Noto Sans Hebrew", sans-serif; }
+html[dir="rtl"] .ptichaherocopy h1,
+html[dir="rtl"] .studysection > h1,
+html[dir="rtl"] .studycontent h2,
+html[dir="rtl"] .studycontent h3,
+html[dir="rtl"] .lesson summary strong,
+html[dir="rtl"] .lightcore,
+html[dir="rtl"] .desirecore { font-family: "Noto Sans Hebrew", sans-serif; }
+html[dir="rtl"] .studylayout { grid-template-columns: minmax(0, 1fr) 250px; }
+html[dir="rtl"] .studysidebar { grid-column: 2; }
+html[dir="rtl"] .studycontent { grid-column: 1; grid-row: 1; }
+html[dir="rtl"] .studysidebar a { transition: color .2s ease, padding-right .2s ease; }
+html[dir="rtl"] .studysidebar a:hover,
+html[dir="rtl"] .studysidebar a.active { padding-left: 0; padding-right: 5px; }
+html[dir="rtl"] .studycontent blockquote { border-left: 0; border-right: 1px solid var(--gold); border-radius: 16px 0 0 16px; }
+html[dir="rtl"] .studytable th,
+html[dir="rtl"] .studytable td { text-align: right; border-right: 0; border-left: 1px solid var(--line); }
+html[dir="rtl"] .studytable th:last-child,
+html[dir="rtl"] .studytable td:last-child { border-left: 0; }
+html[dir="rtl"] .ptichahero { direction: rtl; }
+html[dir="rtl"] .hero-actions { justify-content: flex-start; }
+@media (max-width: 1050px) {
+  html[dir="rtl"] .studylayout { grid-template-columns: 1fr; }
+  html[dir="rtl"] .studysidebar,
+  html[dir="rtl"] .studycontent { grid-column: auto; grid-row: auto; }
+}
+@media (max-width: 760px) {
+  .language-switch { gap: 3px; }
+  .language-switch a { padding: 4px; }
+}
+
+@media (max-width: 1050px) {
+  .ptichapage .site-header {
+    height: auto;
+    min-height: 76px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px 16px;
+  }
+  .ptichapage .nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 18px;
+  }
+  .ptichapage .language-switch { margin-inline-start: auto; }
+  .ptichahero { padding-top: 165px; }
+}
+
+@media (max-width: 760px) {
+  .ptichapage .nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+}
