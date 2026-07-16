@@ -27,12 +27,21 @@ document.querySelectorAll('.reveal').forEach((element, index) => {
 });
 
 const nav = document.querySelector('.nav');
-if (nav && !nav.querySelector('a[href="pticha.html"]') && !document.body.classList.contains('ptichapage')) {
+const pageFile = window.location.pathname.split('/').pop() || 'index.html';
+const documentLanguage = (document.documentElement.lang || '').toLowerCase();
+const siteLanguage = pageFile === 'he.html' || documentLanguage.startsWith('he') ? 'he' : pageFile === 'en.html' || documentLanguage.startsWith('en') ? 'en' : 'ru';
+const ptichaConfig = {
+  ru: { href: 'pticha.html', link: 'Птиха', author: 'Бааль Сулам', title: 'Птиха понятным языком', description: 'Восемь последовательных уроков с пояснениями, картой процесса и вопросами для повторения.', button: 'Открыть учебный конспект' },
+  he: { href: 'pticha_he.html', link: 'פתיחה', author: 'בעל הסולם', title: 'פתיחה בשפה ברורה', description: 'שמונה שיעורים רצופים עם הסברים, מפת תהליך ושאלות לחזרה.', button: 'לפתוח את מדריך הלימוד' },
+  en: { href: 'pticha_en.html', link: 'Pticha', author: 'Baal HaSulam', title: 'Pticha in clear language', description: 'Eight connected lessons with explanations, a process map, and review questions.', button: 'Open the study guide' }
+}[siteLanguage];
+
+if (nav && !nav.querySelector(`a[href="${ptichaConfig.href}"]`) && !document.body.classList.contains('ptichapage')) {
   const link = document.createElement('a');
-  link.href = 'pticha.html';
-  link.textContent = 'Птиха';
+  link.href = ptichaConfig.href;
+  link.textContent = ptichaConfig.link;
   link.style.display = 'inline-flex';
-  const languageLink = nav.querySelector('a[href="index.html"]');
+  const languageLink = nav.querySelector('a[href="index.html"], a[href="he.html"], a[href="en.html"]');
   nav.insertBefore(link, languageLink || null);
 }
 
@@ -41,12 +50,7 @@ if (sourceList && !sourceList.querySelector('[data-pticha-card]')) {
   const card = document.createElement('article');
   card.className = 'source-item reveal visible';
   card.dataset.ptichaCard = 'true';
-  card.innerHTML = `
-    <span>Бааль Сулам</span>
-    <h3>Птиха понятным языком</h3>
-    <p>Восемь последовательных уроков с пояснениями, картой процесса и вопросами для повторения.</p>
-    <a class="button ghost" href="pticha.html">Открыть учебный конспект</a>
-  `;
+  card.innerHTML = `<span>${ptichaConfig.author}</span><h3>${ptichaConfig.title}</h3><p>${ptichaConfig.description}</p><a class="button ghost" href="${ptichaConfig.href}">${ptichaConfig.button}</a>`;
   sourceList.appendChild(card);
 }
 
