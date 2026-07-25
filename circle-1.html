@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b111b">
+<title>Круглая методика. Встреча в круге</title>
+<style>
+:root{--bg:#0b111b;--panel:#121d2b;--panel2:#172538;--text:#f5f7fa;--muted:#aab7c6;--gold:#d9b66f;--blue:#8bc5ec;--line:rgba(255,255,255,.1);--r:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 10% 0,rgba(139,197,236,.08),transparent 30rem),radial-gradient(circle at 90% 10%,rgba(217,182,111,.08),transparent 30rem),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.55}button,input,textarea{font:inherit}a{color:inherit}.wrap{width:min(1120px,calc(100% - 28px));margin:auto}.kicker{color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.muted{color:var(--muted)}h1{font-size:clamp(3.2rem,8vw,6.7rem);line-height:.92;letter-spacing:-.06em;margin:.4rem 0 1rem}h2{font-size:clamp(2rem,4.5vw,3.3rem);letter-spacing:-.04em;margin:0 0 12px}h3{margin:.2rem 0 .45rem}.hero{min-height:88vh;display:grid;align-items:center;padding:70px 0 42px}.heroGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center}.lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:760px}.topic{margin-top:22px;padding:18px 20px;border:1px solid rgba(217,182,111,.2);background:rgba(217,182,111,.07);border-radius:18px}.topic small{display:block;color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.topic b{display:block;font-size:clamp(1.1rem,2.4vw,1.45rem);margin-top:5px}.card{background:linear-gradient(180deg,rgba(23,37,56,.94),rgba(18,29,43,.94));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 20px 60px rgba(0,0,0,.25)}.circleCard{padding:28px}.circle{width:250px;height:250px;border:1px solid rgba(217,182,111,.35);border-radius:50%;position:relative;margin:2px auto 24px}.dot{position:absolute;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#e5f4ff);box-shadow:0 0 25px rgba(139,197,236,.4);transform:translate(-50%,-50%)}.glow{position:absolute;width:110px;height:110px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(217,182,111,.42),rgba(217,182,111,.06) 55%,transparent 73%)}.principles{display:grid;gap:10px;margin-top:18px}.principle{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:13px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}.num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(217,182,111,.12);color:var(--gold);font-weight:900}.principle span{display:block;color:var(--muted);font-size:.92rem}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:999px;padding:11px 17px;background:var(--gold);color:#10151c;font-weight:900;cursor:pointer;text-decoration:none}.btn.alt{background:#213149;color:var(--text);border:1px solid var(--line)}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.nav{position:sticky;top:0;z-index:20;background:rgba(11,17,27,.83);backdrop-filter:blur(15px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.navIn{display:flex;gap:8px;overflow:auto;padding:9px 0}.nav a{text-decoration:none;color:var(--muted);white-space:nowrap;padding:8px 11px;border-radius:999px}.nav a:hover{background:rgba(255,255,255,.05);color:var(--text)}section{padding:64px 0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.box{padding:20px}.big{font-size:2.3rem;font-weight:950;color:var(--gold);line-height:1}.box p{color:var(--muted);margin:.5rem 0}.path .box{min-height:185px}.ruleList{padding:8px 22px}.rule{display:grid;grid-template-columns:42px 1fr;gap:13px;padding:16px 0;border-bottom:1px solid var(--line)}.rule:last-child{border-bottom:0}.rule b{display:block}.rule span{color:var(--muted)}.hostBtn{position:fixed;right:15px;top:15px;z-index:70;border:1px solid var(--line);background:rgba(11,17,27,.78);backdrop-filter:blur(14px);color:var(--muted);border-radius:999px;padding:9px 13px;font-weight:900;cursor:pointer}.hostOnly{display:none}body.host .hostOnly{display:block}body.host .navParticipant{display:none}.hostBar{position:sticky;top:0;z-index:45;background:rgba(9,14,23,.94);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}.hostBarIn{display:flex;gap:8px;align-items:center;overflow:auto;padding:9px 0}.formGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.field{width:100%;background:#0d1622;color:var(--text);border:1px solid var(--line);border-radius:14px;padding:12px 13px;outline:none}.field:focus{border-color:rgba(217,182,111,.5)}textarea.field{min-height:100px;resize:vertical}label{display:block;color:var(--muted);font-size:.83rem;margin:0 0 6px}.timeline{display:grid;gap:10px}.step{display:grid;grid-template-columns:68px 1fr auto;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}.mins{font-size:1.45rem;font-weight:950;color:var(--gold);text-align:center}.tag{font-size:.75rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 8px}.question{padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02);margin:9px 0}.question span{color:var(--muted);display:block;font-size:.92rem;margin-top:4px}.modal{display:none;position:fixed;inset:0;z-index:100;background:#09101a;overflow:auto}.modal.open{display:block}.presenter{min-height:100vh;width:min(940px,calc(100% - 28px));margin:auto;display:grid;grid-template-rows:auto 1fr auto;padding:16px 0}.top,.bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}.screen{display:grid;place-items:center;padding:24px 0}.slide{width:100%;padding:clamp(25px,5vw,52px);border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,#16243a,#101a28)}.slide h2{font-size:clamp(2.1rem,5vw,4.3rem)}.timer{font-size:clamp(3.3rem,12vw,8rem);font-weight:950;color:var(--gold);letter-spacing:-.06em;line-height:1;margin:25px 0}.progress{height:6px;border-radius:999px;background:#1b293b;overflow:hidden}.fill{height:100%;width:0;background:var(--gold)}.mini{display:none;position:fixed;right:15px;bottom:15px;z-index:80;background:#101b2a;border:1px solid var(--line);border-radius:16px;padding:12px}.mini.show{display:block}.miniTime{font-size:1.8rem;font-weight:950;color:var(--gold)}footer{padding:35px 0 65px;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:850px){.heroGrid,.formGrid{grid-template-columns:1fr}.grid3,.grid4{grid-template-columns:1fr 1fr}.circleCard{order:-1}.step{grid-template-columns:58px 1fr}.step .tag{grid-column:2}}
+@media(max-width:560px){.grid3,.grid4{grid-template-columns:1fr}.hero{padding-top:40px}.circle{width:210px;height:210px}.hostBtn{top:auto;bottom:14px}.path .box{min-height:0}}
+</style>
+</head>
+<body>
+<button class="hostBtn" id="hostBtn" onclick="toggleHost()">Режим ведущего</button>
+
+<header class="hero" id="top">
+<div class="wrap heroGrid">
+<div>
+<div class="kicker">Встреча в круге • 60 минут</div>
+<h1>Добро пожаловать<br>в круг</h1>
+<p class="lead">Здесь не нужно доказывать, кто прав. Мы пробуем услышать друг друга, добавить свою уникальную точку и вместе увидеть то, чего никто из нас не видит в одиночку.</p>
+<div class="topic"><small>Тема встречи</small><b>Как создать между нами атмосферу доверия, участия и взаимной поддержки?</b></div>
+<div class="principles">
+<div class="principle"><div class="num">1</div><div><b>Говорим по очереди</b><span>Не перебиваем. Даем каждому закончить мысль.</span></div></div>
+<div class="principle"><div class="num">2</div><div><b>Слушаем, чтобы понять</b><span>Пока говорит другой, не готовим ему ответ.</span></div></div>
+<div class="principle"><div class="num">3</div><div><b>Не спорим, а добавляем</b><span>Другой взгляд не отменяет мой. Вместе картина становится полнее.</span></div></div>
+</div>
+<div class="btns"><a class="btn" href="#meaning">Войти в круг</a><a class="btn alt" href="#rules">Все правила</a></div>
+</div>
+<div class="card circleCard">
+<div class="circle" id="circle"><div class="glow"></div></div>
+<div class="kicker">Наш ориентир</div>
+<h3>От личной точки к общей</h3>
+<p class="muted">Не ищем победителя и не голосуем за лучшее мнение. Собираем из разных взглядов одну более полную картину.</p>
+</div>
+</div>
+</header>
+
+<nav class="nav navParticipant"><div class="wrap navIn"><a href="#meaning">Что мы строим</a><a href="#path">Как пройдет встреча</a><a href="#rules">Правила</a></div></nav>
+
+<div class="hostBar hostOnly"><div class="wrap hostBarIn"><button class="btn" onclick="openPresenter()">Начать встречу</button><a class="btn alt" href="#setup">Подготовка</a><a class="btn alt" href="#scenario">Сценарий</a><a class="btn alt" href="#questions">Вопросы</a><a class="btn alt" href="#help">Подсказки</a></div></div>
+
+<main>
+<section id="meaning"><div class="wrap">
+<div class="kicker">Суть</div><h2>Что именно мы строим</h2>
+<div class="grid3">
+<div class="card box"><div class="big">Я</div><h3>Личная точка</h3><p>Каждый приходит со своим опытом, взглядом и ощущением.</p></div>
+<div class="card box"><div class="big">+</div><h3>Взаимовключение</h3><p>Не отменяем услышанное. Пытаемся понять и добавить свою грань.</p></div>
+<div class="card box"><div class="big">Мы</div><h3>Общая картина</h3><p>Ищем формулировку, в которой каждый узнает свой вклад.</p></div>
+</div>
+</div></section>
+
+<section id="path" class="path"><div class="wrap">
+<div class="kicker">Как пройдет встреча</div><h2>Четыре шага</h2><p class="lead">Ничего специально готовить не нужно. Достаточно быть включенным и отвечать искренне.</p>
+<div class="grid4">
+<div class="card box"><div class="big">01</div><h3>Настраиваемся</h3><p>Знакомимся с формой разговора и правилами круга.</p></div>
+<div class="card box"><div class="big">02</div><h3>Слушаем</h3><p>Каждый отвечает на один и тот же вопрос из своего опыта.</p></div>
+<div class="card box"><div class="big">03</div><h3>Ищем общее</h3><p>Замечаем, что соединяет разные ответы и что каждый добавляет.</p></div>
+<div class="card box"><div class="big">04</div><h3>Завершаем</h3><p>Формулируем общий вывод и делимся впечатлением от связи.</p></div>
+</div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+<div class="kicker">Правила круга</div><h2>Десять опор</h2><p class="lead">Главная задача правил не ограничить разговор, а дать каждому безопасное и равное место в нем.</p>
+<div class="card ruleList">
+<div class="rule"><div class="num">1</div><div><b>Равенство и важность</b><span>В круге нет больших и маленьких. Мнение каждого необходимо общей картине.</span></div></div>
+<div class="rule"><div class="num">2</div><div><b>Одна тема</b><span>Отвечаем на вопрос ведущего и не уходим в соседние темы.</span></div></div>
+<div class="rule"><div class="num">3</div><div><b>Высказывается каждый</b><span>Даже короткая фраза добавляет недостающую грань.</span></div></div>
+<div class="rule"><div class="num">4</div><div><b>Слушаем и слышим</b><span>Не перебиваем и стараемся увидеть вопрос глазами говорящего.</span></div></div>
+<div class="rule"><div class="num">5</div><div><b>Без споров, критики и оценок</b><span>Не отменяем чужое мнение. Добавляем свою точку к уже сказанному.</span></div></div>
+<div class="rule"><div class="num">6</div><div><b>Без личных диалогов</b><span>Не обращаемся к одному человеку. Говорим как будто в центр круга.</span></div></div>
+<div class="rule"><div class="num">7</div><div><b>Поднимаемся над раздражением</b><span>Различие мнений используем как материал для более полной картины.</span></div></div>
+<div class="rule"><div class="num">8</div><div><b>Искренность вместо лозунгов</b><span>Говорим из собственного опыта и ощущения.</span></div></div>
+<div class="rule"><div class="num">9</div><div><b>Ищем общее решение</b><span>Не выбираем победителя. Стремимся к формулировке, которую могут принять все.</span></div></div>
+<div class="rule"><div class="num">10</div><div><b>Связь важнее результата</b><span>Практический вывод важен, но атмосфера участия, заботы и тепла важнее ответа.</span></div></div>
+</div>
+</div></section>
+
+<section id="setup" class="hostOnly"><div class="wrap">
+<div class="kicker">Ведущему</div><h2>Подготовка встречи</h2>
+<div class="formGrid">
+<div class="card box"><label>Тема</label><input id="topic" class="field" value="Как создать между нами атмосферу доверия, участия и взаимной поддержки?"><div style="height:12px"></div><label>Цель</label><textarea id="goal" class="field">Помочь участникам почувствовать ценность взаимного слушания и вместе сформулировать одно практическое условие, которое усилит связь после встречи.</textarea></div>
+<div class="card box"><label>Участники</label><input id="people" class="field" value="8–10 человек, один круг"><div style="height:12px"></div><label>Продолжительность</label><input class="field" value="60 минут" readonly><div class="btns"><button class="btn alt" onclick="saveSetup()">Сохранить на этом устройстве</button></div></div>
+</div>
+</div></section>
+
+<section id="scenario" class="hostOnly"><div class="wrap">
+<div class="kicker">Сценарий</div><h2>Ровно 60 минут</h2>
+<div class="timeline">
+<div class="step"><div class="mins">5</div><div><b>Приветствие</b><div class="muted">Тема, цель и принцип: сегодня мы не спорим, а собираем общую картину.</div></div><span class="tag">вход</span></div>
+<div class="step"><div class="mins">5</div><div><b>Разогревающий круг</b><div class="muted">"С каким состоянием я пришел и что хочу добавить в нашу общую атмосферу?"</div></div><span class="tag">чувство</span></div>
+<div class="step"><div class="mins">8</div><div><b>Правила</b><div class="muted">Каждый выбирает одно особенно важное правило и коротко объясняет почему.</div></div><span class="tag">форма</span></div>
+<div class="step"><div class="mins">9</div><div><b>Вопрос 1</b><div class="muted">"Что помогает мне действительно услышать другого человека?"</div></div><span class="tag">слушание</span></div>
+<div class="step"><div class="mins">9</div><div><b>Вопрос 2</b><div class="muted">"Что обычно разделяет нас даже тогда, когда внешне мы согласны?"</div></div><span class="tag">различия</span></div>
+<div class="step"><div class="mins">9</div><div><b>Вопрос 3</b><div class="muted">"Какое отношение между нами удерживает связь при разных мнениях?"</div></div><span class="tag">общее</span></div>
+<div class="step"><div class="mins">10</div><div><b>Общий вывод</b><div class="muted">"Какое одно условие мы готовы взять с собой после этой встречи?"</div></div><span class="tag">результат</span></div>
+<div class="step"><div class="mins">5</div><div><b>Впечатление</b><div class="muted">"Что я почувствовал именно от формы нашего разговора?" Один или два слова.</div></div><span class="tag">финал</span></div>
+</div>
+<div class="btns"><button class="btn" onclick="openPresenter()">Открыть режим проведения</button></div>
+</div></section>
+
+<section id="questions" class="hostOnly"><div class="wrap">
+<div class="kicker">Банк вопросов</div><h2>От Я к Мы</h2>
+<div class="grid3">
+<div class="card box"><h3>Вход</h3><div class="question"><b>Как эта тема касается меня лично?</b><span>Возвращает из абстракций к живому опыту.</span></div><div class="question"><b>Какой случай повлиял на мое отношение к этому вопросу?</b><span>История часто раскрывает больше декларации.</span></div></div>
+<div class="card box"><h3>Углубление</h3><div class="question"><b>Что я сейчас услышал такого, чего раньше не замечал?</b><span>Не проси ссылаться на конкретного участника.</span></div><div class="question"><b>Как выглядит вопрос глазами всех?</b><span>Переводит внимание от личной правоты к общей картине.</span></div></div>
+<div class="card box"><h3>Завершение</h3><div class="question"><b>Что общего есть во всех разных ответах?</b><span>Помогает увидеть повторяющийся мотив.</span></div><div class="question"><b>Как одним предложением звучит наш общий вывод?</b><span>Не торопи формулировку.</span></div></div>
+</div>
+</div></section>
+
+<section id="help" class="hostOnly"><div class="wrap">
+<div class="kicker">Подсказки ведущему</div><h2>Когда что то идет не по плану</h2>
+<div class="grid3">
+<div class="card box"><h3>Начался спор</h3><p>"Вернемся к правилу. Мы не отвечаем друг другу. Каждый добавляет свой взгляд на вопрос".</p></div>
+<div class="card box"><h3>Говорят слишком долго</h3><p>"Спасибо. Давайте дадим возможность добавить всем". Следующий круг попроси провести одной мыслью.</p></div>
+<div class="card box"><h3>Кто то молчит</h3><p>"Даже одно слово сейчас важно для общей картины". Не дави и при необходимости вернись к человеку позже.</p></div>
+<div class="card box"><h3>Ушли от темы</h3><p>"Это важная соседняя тема. Сейчас завершим именно тот вопрос, который мы взяли".</p></div>
+<div class="card box"><h3>Энергия упала</h3><p>Попроси короткий личный пример или историю вместо общего рассуждения.</p></div>
+<div class="card box"><h3>Резкое несогласие</h3><p>"Не будем выбирать между взглядами. Посмотрим, что каждый из них добавляет общей картине".</p></div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Круглая методика. Пространство равного, внимательного и объединяющего разговора.</div></footer>
+
+<div class="mini" id="mini"><div class="muted">Таймер ответа</div><div class="miniTime" id="miniTime">01:00</div><div class="btns"><button class="btn" onclick="miniToggle()">Старт</button><button class="btn ghost" onclick="miniReset()">Сброс</button><button class="btn ghost" onclick="miniShow()">Закрыть</button></div></div>
+
+<div class="modal" id="modal">
+<div class="presenter">
+<div class="top"><button class="btn ghost" onclick="closePresenter()">Закрыть</button><span class="muted" id="count"></span><button class="btn ghost" onclick="miniShow()">Таймер 1 мин</button></div>
+<div class="screen"><div class="slide"><div class="kicker" id="eyebrow"></div><h2 id="slideTitle"></h2><p class="lead" id="slideText"></p><div class="timer" id="timer"></div><div class="progress"><div class="fill" id="fill"></div></div><div class="btns"><button class="btn" id="timerBtn" onclick="toggleTimer()">Старт таймера</button><button class="btn alt" onclick="resetTimer()">Сброс</button></div></div></div>
+<div class="bottom"><button class="btn alt" onclick="prev()">Назад</button><button class="btn alt" onclick="next()">Дальше</button></div>
+</div>
+</div>
+
+<script>
+const c=document.getElementById("circle");for(let i=0;i<10;i++){const a=2*Math.PI*i/10-Math.PI/2,d=document.createElement("div");d.className="dot";d.style.left=(50+43*Math.cos(a))+"%";d.style.top=(50+43*Math.sin(a))+"%";c.appendChild(d)}
+function toggleHost(){const on=document.body.classList.toggle("host");document.getElementById("hostBtn").textContent=on?"Выйти из режима ведущего":"Режим ведущего";if(on)setTimeout(()=>document.getElementById("setup").scrollIntoView({behavior:"smooth"}),70);else window.scrollTo({top:0,behavior:"smooth"})}
+function saveSetup(){localStorage.setItem("ct",topic.value);localStorage.setItem("cg",goal.value);localStorage.setItem("cp",people.value)}
+if(localStorage.ct)topic.value=localStorage.ct;if(localStorage.cg)goal.value=localStorage.cg;if(localStorage.cp)people.value=localStorage.cp;
+const slides=[
+{m:0,e:"До начала",t:"Настройка ведущего",x:"Не становись главным источником ответов. Создай условия, в которых общее родится между участниками."},
+{m:5,e:"Вступление",t:"Приветствие и дорожная карта",x:"Озвучь тему и цель. Сегодня мы не спорим и не убеждаем. Мы собираем одну общую картину из мнений всех."},
+{m:5,e:"Разогрев",t:"С каким состоянием я пришел?",x:"Одной короткой фразой: с каким состоянием я пришел сегодня и что хотел бы добавить в общую атмосферу?"},
+{m:8,e:"Правила",t:"Какое правило особенно важно?",x:"Каждый выбирает одно правило и коротко объясняет, почему без него круг не получится."},
+{m:9,e:"Вопрос 1",t:"Что помогает мне действительно услышать другого?",x:"Отвечаем из собственного опыта. После полного круга ведущий коротко собирает общий мотив."},
+{m:9,e:"Вопрос 2",t:"Что разделяет нас даже при внешнем согласии?",x:"Не спорим и не исправляем. Каждый добавляет свою грань."},
+{m:9,e:"Вопрос 3",t:"Какое отношение удерживает связь при разных мнениях?",x:"Ищем то общее отношение, которое мы действительно готовы поддерживать."},
+{m:10,e:"Общий вывод",t:"Одно условие, которое мы берем с собой",x:"Соберите одно общее предложение, в котором каждый узнает свой вклад."},
+{m:5,e:"Финал",t:"Что я почувствовал от формы разговора?",x:"Одно или два слова от каждого. Поблагодари участников и заверши на теплом ощущении связи."}
+];
+let ix=0,left=0,total=0,id=null,audio=null;
+function fmt(s){s=Math.max(0,s);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function render(){const s=slides[ix];eyebrow.textContent=s.e;slideTitle.textContent=s.t;slideText.textContent=s.x;count.textContent=(ix+1)+" / "+slides.length;left=s.m*60;total=left;stopTimer();paint()}
+function paint(){timer.textContent=total===0?"Без таймера":fmt(left);fill.style.width=(total?(total-left)/total*100:0)+"%"}
+function beep(){try{audio=audio||new(window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.connect(g);g.connect(audio.destination);o.frequency.value=660;g.gain.setValueAtTime(.15,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.35);o.start();o.stop(audio.currentTime+.36)}catch(e){}}
+function toggleTimer(){if(total===0)return;if(id){stopTimer();return}timerBtn.textContent="Пауза";id=setInterval(()=>{left--;paint();if(left<=0){stopTimer();beep()}},1000)}
+function stopTimer(){if(id){clearInterval(id);id=null}timerBtn.textContent="Старт таймера"}
+function resetTimer(){left=slides[ix].m*60;total=left;stopTimer();paint()}
+function openPresenter(){ix=0;modal.classList.add("open");document.body.style.overflow="hidden";render()}
+function closePresenter(){stopTimer();modal.classList.remove("open");document.body.style.overflow=""}
+function next(){if(ix<slides.length-1){ix++;render()}}
+function prev(){if(ix>0){ix--;render()}}
+let ml=60,mid=null;function miniShow(){mini.classList.toggle("show")}function miniToggle(){if(mid){clearInterval(mid);mid=null;return}mid=setInterval(()=>{ml--;miniTime.textContent=fmt(ml);if(ml<=0){clearInterval(mid);mid=null;beep()}},1000)}function miniReset(){if(mid){clearInterval(mid);mid=null}ml=60;miniTime.textContent="01:00"}
+document.addEventListener("keydown",e=>{if(!modal.classList.contains("open"))return;if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev();if(e.key==="Escape")closePresenter();if(e.key===" "){e.preventDefault();toggleTimer()}});
+</script>
+</body>
+</html>
