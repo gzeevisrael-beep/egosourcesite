@@ -1,0 +1,78 @@
+/* Refinements layered over the original visual system. */
+html[dir="rtl"] blockquote {
+  border-left: 0;
+  border-right: 1px solid var(--gold);
+  padding-left: 0;
+  padding-right: 25px;
+}
+
+.hero-visual .orb span {
+  padding: 12px;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.sources-heading .lead {
+  margin-top: 24px;
+  max-width: 780px;
+}
+
+.final-copy .hero-actions {
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    gap: 10px;
+  }
+
+  .brand {
+    flex: 0 0 auto;
+  }
+
+  .brand span:last-child {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding: 8px 0;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a,
+  .nav a:not(:nth-last-child(-n+2)),
+  .nav a[href="he.html"],
+  .nav a[href="en.html"],
+  .nav a[href="index.html"],
+  .nav a[href="pticha.html"],
+  .nav a[href="pticha_en.html"],
+  .nav a[href="pticha_he.html"],
+  .nav a[href="circle.html"] {
+    display: inline-flex !important;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .sound-toggle {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-visual .orb span {
+    font-size: 20px;
+  }
+
+  .barrier-line p {
+    letter-spacing: .12em;
+  }
+}

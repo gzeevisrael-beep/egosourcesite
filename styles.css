@@ -325,7 +325,9 @@ footer p { margin: 0; }
   display: inline-flex !important;
   align-items: center;
 }
-  } (max-width: 600px) {
+}
+
+@media (max-width: 600px) {
   .section { width: min(100% - 30px, var(--max)); }
   .site-header { height: 66px; padding: 0 16px; }
   .hero { padding-top: 100px; }

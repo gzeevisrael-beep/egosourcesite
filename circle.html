@@ -13,9 +13,11 @@
 @media(max-width:560px){.topbarIn{min-height:58px}.brand{display:none}.hero{padding-top:45px}.quick{grid-template-columns:1fr}.circle{width:220px;height:220px}.presentTop .btn{padding:8px 11px}.slide{min-height:72vh}.timerRow{display:block}.timerControls{margin-top:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+<link rel="stylesheet" href="circle_archive.css?v=7">
+<script src="circle_archive_pre.js?v=6"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap topbarIn"><div class="brand">Круглый стол</div><button class="btn" id="startShow" type="button">Начать встречу</button><button class="btn alt" id="hostMode" type="button" aria-pressed="false">Режим ведущего</button><button class="btn ghost" id="fullScreen" type="button">Весь экран</button></div></header>
+<header class="topbar"><div class="wrap topbarIn"><div class="brand">Круглый стол</div><a class="btn ghost" href="source_library.html">Источники</a><a class="btn ghost" href="practice_workshop.html">Практикум</a><a class="btn ghost" href="spiritual_journey.html">Путь</a><button class="btn" id="startShow" type="button">Начать встречу</button><button class="btn alt" id="hostMode" type="button" aria-pressed="false">Режим ведущего</button><button class="btn ghost" id="fullScreen" type="button">Весь экран</button></div></header>
 
 <main>
 <section class="hero" id="top"><div class="wrap heroGrid"><div><div class="kicker">Постоянный формат круглого стола • 60 минут</div><h1 id="heroTitle">Средняя линия</h1><p class="lead" id="heroIntro">Не выбираем между двумя противоположностями. Учимся отнести состояние к Творцу и одновременно принять ответственность за своё отношение, усилие и связь с товарищами.</p><div class="topic"><small>Главный вопрос встречи</small><b id="heroQuestion">Как соединить «Нет никого кроме Него» и «Если не я себе, то кто мне», чтобы каждое состояние вело к отдаче, соединению и просьбе?</b></div><div class="quick"><div><b>Правила</b><span class="muted">Всегда неизменны</span></div><div><b>Формат</b><span class="muted">Всегда 60 минут</span></div><div><b>Содержание</b><span class="muted">Меняет ведущий</span></div></div></div><div class="card circleCard"><div class="circle" id="circle"><div class="glow"></div></div><div class="kicker">Ориентир каждой встречи</div><h3>Связь важнее правоты</h3><p class="muted">Говорим по очереди, не спорим, не исправляем товарищей и стараемся добавить свою точку в общий центр круга.</p></div></div></section>
@@ -76,9 +78,9 @@ intro:'Не выбираем между двумя противоположно�
 question:'Как соединить «Нет никого кроме Него» и «Если не я себе, то кто мне», чтобы каждое состояние вело к отдаче, соединению и просьбе?',
 goal:'Цель встречи: соединить признание высшего управления с личной ответственностью за отношение, усилие и связь.',
 intention:'Мы не выясняем, кто прав. Мы хотим соединить две противоположности.\n\nСостояние приходит свыше. Отношение, усилие и заботу о связи должен выстроить человек.\n\nГоворим о собственной работе. Не исправляем товарищей.',
-sourceTitle:'Бааль Сулам. Статья на окончание книги Зоар',
-sourceRef:'https://kabbalahmedia.info/ru/sources/VyDjtKiN',
-sourceText:'«Все дела твои пусть будут ради Небес», то есть не делай ничего, что не ведёт к цели слияния.\n\nПусть все твои действия будут, чтобы отдавать и помогать ближнему своему. И тогда ты придёшь к подобию по форме.',
+sourceTitle:'Бааль Сулам. Шамати 217. Если не я себе, то кто мне',
+sourceRef:'https://kabbalahmedia.info/ru/sources/RS6B9xHs',
+sourceText:'«Человек должен исполнять всю свою работу в свойстве: «Если не я себе, то кто мне».»\n\nПосле усилия важно выяснять всё происходящее как находящееся под единым управлением. Полный текст открывайте по ссылке на Каббала Медиа.',
 videoTitle:'Как соединить две противоположности',
 videoPath:'rav_middle_line.mp4',
 round1:'Что в каждом состоянии я должен отнести к Творцу, а не к себе и не к товарищам?',
@@ -136,5 +138,6 @@ let miniLeft=60,miniId=null;function miniStop(){if(miniId){clearInterval(miniId)
 $('oneMinute').addEventListener('click',()=>{$('miniTimer').classList.add('show')});$('miniClose').addEventListener('click',()=>{$('miniTimer').classList.remove('show');miniStop()});$('miniToggle').addEventListener('click',()=>{if(miniId){miniStop();return}$('miniToggle').textContent='Пауза';miniId=setInterval(()=>{miniLeft--;miniPaint();if(miniLeft<=0){miniStop();beep()}},1000)});$('miniReset').addEventListener('click',()=>{miniStop();miniLeft=60;miniPaint()});
 renderContent();
 </script>
+<script src="circle_archive.js?v=6"></script>
 </body>
 </html>

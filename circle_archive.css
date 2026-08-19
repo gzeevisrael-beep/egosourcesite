@@ -1,0 +1,65 @@
+/* Archive refinement for circle.html */
+.archiveTopLink { flex: 0 0 auto; }
+.archiveMethod { padding-top: 44px; padding-bottom: 44px; }
+.archiveMethod .sectionHead { max-width: 900px; }
+.archiveMethodGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 22px;
+}
+.archiveMethodCard {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.025);
+}
+.archiveMethodCard b { display: block; color: var(--gold); margin-bottom: 8px; }
+.archiveMethodCard span { color: var(--muted); }
+.archiveSourceBar {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(227,189,112,.26);
+  border-radius: 18px;
+  background: rgba(227,189,112,.055);
+}
+.archiveSourceBar strong { display: block; margin-bottom: 12px; }
+.archiveSourceLinks { display: flex; flex-wrap: wrap; gap: 8px; }
+.archiveSourceLinks a { text-decoration: none; }
+.archiveSourceNote { margin-top: 12px; color: var(--muted); font-size: .9rem; }
+.sourceOpenLink {
+  display: inline-flex;
+  margin-top: 10px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: var(--blue);
+}
+.archivePreflight {
+  margin-top: 18px;
+  display: grid;
+  gap: 8px;
+}
+.archiveCheck {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255,255,255,.02);
+  color: var(--muted);
+}
+.archiveCheck input { margin-top: 4px; accent-color: var(--gold); }
+.archiveCheck:has(input:checked) { color: var(--text); border-color: rgba(142,212,173,.28); background: rgba(142,212,173,.05); }
+.archiveFrame {
+  margin-top: 18px;
+  padding: 15px 17px;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+  background: rgba(227,189,112,.055);
+  color: #dbe5ef;
+}
+@media(max-width:900px){.archiveMethodGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.archiveMethodGrid{grid-template-columns:1fr}.archiveTopLink span{display:none}.archiveSourceLinks .btn{max-width:100%;white-space:normal;text-align:center}}
