@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="מפת עבודה רוחנית לפי בעל הסולם ורב״ש: מן המצב אל העיקרון, העבודה, הבקשה המשותפת והמקור">
+  <title>מפת העבודה הרוחנית</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="spiritual_map.css?v=1">
+</head>
+<body class="map-page">
+  <header class="map-topbar">
+    <div class="map-wrap map-topbar-inner">
+      <a class="map-brand" href="he.html"><span class="map-brand-mark">∞</span><span data-ui="brand"></span></a>
+      <nav class="map-nav" aria-label="Site navigation">
+        <a class="map-home-link" href="he.html" data-ui="home"></a>
+        <a href="pticha_he.html" data-ui="pticha"></a>
+        <a href="source_library_he.html">מקורות</a>
+        <a href="circle.html" data-ui="circle"></a>
+        <a href="practice_workshop_he.html">תרגול</a>
+        <a href="spiritual_journey_he.html">דרך</a>
+        <span class="map-lang"><a href="spiritual_map.html">RU</a><a href="spiritual_map_he.html">עברית</a><a href="spiritual_map_en.html">EN</a></span>
+      </nav>
+</div>
+  </header>
+
+  <main>
+    <section class="map-hero map-wrap">
+      <div>
+        <p class="map-kicker" data-ui="kicker"></p>
+        <h1 data-ui="title"></h1>
+        <p class="map-lead" data-ui="lead"></p>
+        <div class="map-actions">
+          <a class="map-button primary" href="#states" data-ui="start"></a>
+          <a class="map-button" href="#topics" data-ui="all-topics"></a>
+          <a class="map-button" href="practice_workshop_he.html">תרגול</a>
+        </div>
+      </div>
+      <div class="map-hero-visual" aria-hidden="true">
+        <div class="map-orbit">
+          <div class="map-orbit-core" data-ui="orbit"></div>
+          <span class="map-orbit-dot"></span><span class="map-orbit-dot"></span><span class="map-orbit-dot"></span><span class="map-orbit-dot"></span>
+          <span class="map-orbit-dot"></span><span class="map-orbit-dot"></span><span class="map-orbit-dot"></span><span class="map-orbit-dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section map-wrap" id="states">
+      <div class="map-section-head">
+        <p class="map-kicker" data-ui="states-kicker"></p>
+        <h2 data-ui="states-title"></h2>
+        <p data-ui="states-lead"></p>
+      </div>
+      <div class="map-state-grid" id="stateGrid"></div>
+      <div class="map-route" id="routeBox">
+        <div class="map-route-title" id="routeTitle"></div>
+        <div class="map-route-list" id="routeList"></div>
+      </div>
+    </section>
+
+    <section class="map-section map-wrap" id="topics">
+      <div class="map-section-head">
+        <p class="map-kicker" data-ui="topics-kicker"></p>
+        <h2 data-ui="topics-title"></h2>
+        <p data-ui="topics-lead"></p>
+      </div>
+      <div class="map-toolbar">
+        <div class="map-filters" id="mapFilters"></div>
+        <input class="map-search" id="mapSearch" type="search" autocomplete="off">
+      </div>
+      <div class="map-grid" id="mapGrid"></div>
+    </section>
+
+    <section class="map-section map-wrap" id="flow">
+      <div class="map-section-head">
+        <p class="map-kicker" data-ui="flow-kicker"></p>
+        <h2 data-ui="flow-title"></h2>
+      </div>
+      <div class="map-flow" id="flowGrid"></div>
+    </section>
+  </main>
+
+  <div class="map-detail-backdrop" id="detailBackdrop"></div>
+  <aside class="map-detail" id="detailPanel" aria-hidden="true" aria-label="Topic details">
+    <button class="map-detail-close" id="detailClose" type="button" aria-label="Close">×</button>
+    <div class="map-detail-meta" id="detailMeta"></div>
+    <h2 id="detailTitle"></h2>
+    <div class="map-detail-block"><small id="detailRevealedLabel"></small><p id="detailRevealed"></p></div>
+    <div class="map-detail-block"><small id="detailPrincipleLabel"></small><p id="detailPrinciple"></p></div>
+    <div class="map-detail-block"><small id="detailWorkLabel"></small><p id="detailWork"></p></div>
+    <div class="map-detail-block"><small id="detailAskLabel"></small><p id="detailAsk"></p></div>
+    <div class="map-source-card"><span id="detailSourceLabel"></span><strong id="detailSourceTitle"></strong><a class="map-button" id="detailSourceLink" target="_blank" rel="noopener noreferrer"></a></div>
+    <div class="map-note" id="detailSourceNote"></div>
+  </aside>
+
+  <footer class="map-footer"><div class="map-wrap" data-ui="footer"></div></footer>
+  <script src="spiritual_map_data.js?v=1"></script>
+  <script src="spiritual_map.js?v=1"></script>
+</body>
+</html>

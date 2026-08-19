@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Spiritual work practice based on Baal HaSulam and Rabash">
+  <title>Spiritual Work Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&family=Heebo:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="practice_workshop.css?v=1">
+</head>
+<body>
+<header class="pw-top"><div class="pw-wrap pw-top-in">
+  <a class="pw-brand" href="en.html"><span class="pw-mark">∞</span><span>The Source</span></a>
+  <nav class="pw-nav">
+    <a href="en.html" data-ui="home"></a>
+    <a href="spiritual_map_en.html" data-ui="map"></a>
+    <a href="source_library_en.html" data-ui="library"></a>
+    <a href="pticha_en.html" data-ui="pticha"></a>
+    <a href="circle.html" data-ui="circle"></a>
+    <a href="spiritual_journey_en.html">Path</a>
+    <span class="pw-lang"><a href="practice_workshop.html">RU</a><a href="practice_workshop_he.html">עברית</a><a href="practice_workshop_en.html">EN</a></span>
+  </nav>
+</div></header>
+<main>
+<section class="pw-hero pw-wrap">
+  <div class="pw-hero-copy">
+    <p class="pw-kicker" data-ui="kicker"></p>
+    <h1 data-ui="title"></h1>
+    <p class="pw-lead" data-ui="lead"></p>
+    <div class="pw-hero-actions">
+      <a class="pw-btn primary" href="#states" data-ui="choose"></a>
+      <button class="pw-btn" id="randomState" type="button" data-ui="random"></button>
+    </div>
+    <div class="pw-progress"><span data-ui="progress"></span><strong id="progressCount">0 / 0</strong><button type="button" id="resetProgress" data-ui="reset"></button></div>
+  </div>
+  <div class="pw-compass" aria-hidden="true"><div class="pw-compass-core">Common request</div><span></span><span></span><span></span><span></span></div>
+</section>
+
+<section class="pw-section pw-wrap" id="states">
+  <div class="pw-section-head"><p class="pw-kicker" data-ui="choose"></p><h2 data-ui="choose"></h2><p data-ui="chooseLead"></p></div>
+  <div class="pw-filters" id="categoryFilters"></div>
+  <div class="pw-grid" id="scenarioGrid"></div>
+</section>
+</main>
+
+<div class="pw-backdrop" id="workBackdrop"></div>
+<aside class="pw-workbench" id="workbench" aria-hidden="true">
+  <button class="pw-close" id="workClose" type="button">×</button>
+  <div class="pw-work-head">
+    <span class="pw-work-category" id="workCategory"></span>
+    <h2 id="workTitle"></h2>
+    <div class="pw-step-label" id="stepLabel"></div>
+    <div class="pw-step-progress"><span id="stepProgress"></span></div>
+  </div>
+  <div class="pw-step-card">
+    <small id="stepKind"></small>
+    <h3 id="stepHeading"></h3>
+    <p id="stepText"></p>
+    <div class="pw-reflection">
+      <label for="reflection" data-ui="reflection"></label>
+      <textarea id="reflection" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="pw-linked" id="linkedArea">
+    <div class="pw-linked-section"><h3 data-ui="sources"></h3><div id="sourceLinks" class="pw-link-list"></div></div>
+    <div class="pw-linked-section"><div id="mapLinks" class="pw-link-list"></div></div>
+  </div>
+  <div class="pw-done" id="doneBox">
+    <h3 data-ui="doneTitle"></h3><p data-ui="doneText"></p>
+    <button class="pw-btn primary" type="button" id="markDone" data-ui="markDone"></button>
+  </div>
+  <div class="pw-controls"><button class="pw-btn" id="prevStep" type="button" data-ui="prev"></button><button class="pw-btn primary" id="nextStep" type="button" data-ui="next"></button></div>
+  <div class="pw-note" data-ui="note"></div>
+</aside>
+
+<footer class="pw-footer"><div class="pw-wrap" data-ui="footer"></div></footer>
+<script src="spiritual_map_data.js?v=1"></script>
+<script src="source_library_data.js?v=1"></script>
+<script src="practice_workshop_data.js?v=1"></script>
+<script src="practice_workshop.js?v=1"></script>
+</body>
+</html>
