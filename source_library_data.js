@@ -578,10 +578,10 @@ window.SOURCE_LIBRARY_DATA = {
       "id": "etz_chaim",
       "author": "ari",
       "corpus": "system",
-      "title_ru": "АРИ. Древо Жизни",
+      "title_ru": "АРИ. Древо Жизни. Начальный отрывок",
       "title_en": "ARI. The Tree of Life",
       "title_he": "האר״י. עץ חיים",
-      "why_ru": "Корневой текст лурианской системы, на которой Бааль Сулам построил ТЭС и свои комментарии.",
+      "why_ru": "Русский перевод начального отрывка из Древа Жизни о свете Бесконечности, сокращении и линии. Для систематического изучения текста АРИ используйте также ТЭС Бааль Сулама.",
       "why_en": "A root text of the Lurianic system on which Baal HaSulam built TES and his commentaries.",
       "why_he": "טקסט שורשי של שיטת האר״י שעליו בנה בעל הסולם את תע״ס ופירושיו.",
       "topics": [
@@ -590,6 +590,7 @@ window.SOURCE_LIBRARY_DATA = {
         "shattering"
       ],
       "url": "https://kabbalahmedia.info/{lang}/sources/HujVytxA",
+      "url_ru": "https://kabbalahmedia.info/ru/sources/UncaTFGA",
       "level": "deep"
     },
     {
