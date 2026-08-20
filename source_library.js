@@ -11,7 +11,7 @@
   const $ = sel => document.querySelector(sel);
   const $$ = sel => [...document.querySelectorAll(sel)];
   const localized = (item, field) => item[`${field}_${lang}`] || item[`${field}_ru`] || '';
-  const urlFor = item => item.url.replace('{lang}', lang);
+  const urlFor = item => (item[`url_${lang}`] || item.url).replace('{lang}', lang);
   const mapFile = lang === 'he' ? 'spiritual_map_he.html' : lang === 'en' ? 'spiritual_map_en.html' : 'spiritual_map.html';
   const labels = {
     author: {baal:ui.baal,rabash:ui.rabash,rashbi:ui.rashbi,ari:ui.ari},
